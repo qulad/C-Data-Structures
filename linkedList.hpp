@@ -59,7 +59,7 @@ template <typename T> void LinkedList<T>::Insert(int Index, T Data) {
     }
     Node<T>* temp = this->Head;
     if (Index == this->Length) {
-        for (int i=1; i<Length-1; i++) {
+        for (int i=1; i<Length; i++) {
             temp = temp->getNext();
         }
         temp->setNext(newNode);
@@ -101,10 +101,13 @@ template <typename T> T LinkedList<T>::Pop(int Index) {
     for (int i=0; i<=Index; i++) {
         if (i == Index-1) {
             value = temp->getNext()->getValue();
+            Node<T>* next = temp->getNext()->getNext();
             if (temp->getNext()->getNext() == nullptr) {
+                temp->setNext(nullptr);
+                Length--;
                 return value;
             }
-            temp->setNext(temp->getNext()->getNext());
+            temp->setNext(next);
             return value;
         }
         

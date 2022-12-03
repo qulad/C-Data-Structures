@@ -39,7 +39,7 @@ template <typename T> void Stack<T>::Add(T Data) {
 
 // Remove data from stack
 template <typename T> T Stack<T>::Pop() {
-    return this->LL->Pop();
+    return this->LL->Pop(LL->getLength()-1);
 };
 
 // Getters
